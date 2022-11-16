@@ -1,11 +1,11 @@
 package com.parameta.empleado.servicios.impl;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.parameta.empleado.excepciones.NotFouldException;
 import com.parameta.empleado.model.Empleado;
 import com.parameta.empleado.repositorio.EmpleadoRepositorio;
 import com.parameta.empleado.servicios.EmpleadoServicios;
@@ -18,7 +18,7 @@ public class EmpleadoServiciosImpl implements EmpleadoServicios {
 	@Override
 	public Empleado getEmpleadoById(Long id) {
 		return empleadoRepositorio.findById(id).orElseThrow(
-				()-> new NoSuchElementException("Empleado mo existe")
+				()-> new NotFouldException("Empleado no existe")
 				);
 	}
 
